@@ -1,0 +1,17 @@
+.ImportVip{
+
+}
+
+.ImportVip .Item{
+    width: 100vw;
+    padding-left: 3.2vw;
+}
+
+.ImportVip .Item .Index{
+    width: 44px;
+    margin-left: 3.2vw;
+}
+
+.ImportVip .Item .text{
+    font-size: 13px;
+}
