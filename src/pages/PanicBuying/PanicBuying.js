@@ -322,13 +322,13 @@ class PanicBuying extends Component {
     }
 
     async batchGetTokenBalance() {
-        setTimeout(() => {
-            let wallets = this.state.wallets;
-            let length = wallets.length;
-            for (let index = 0; index < length; index++) {
+        let wallets = this.state.wallets;
+        let length = wallets.length;
+        for (let index = 0; index < length; index++) {
+            setTimeout(() => {
                 this.getTokenBalance(wallets[index], index);
-            }
-        }, 30);
+            }, 30 * index);
+        }
     }
 
     async getTokenBalance(wallet, index) {

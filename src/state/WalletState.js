@@ -2,13 +2,41 @@ import Web3 from 'web3'
 class WalletState {
     configs = {
         //支持的链
-        chains: ['BSC', 'Heco', 'Ethereum', 'ETHW'],
+        chains: ['BSC', 'PG', 'Heco', 'Ethereum', 'ETHW'],
+        //HT链配置信息
+        PG: {
+            chain: 'PG',
+            ChainId: 20201022,
+            Symbol: 'PG',
+            RPC: 'https://pegorpc.com/',
+            Browser: 'https://scan.pego.network/',
+            USDT: '0x02F9Bebf5E54968D8Cc2562356C91ECDE135801B',
+            WETH: '0x0cF4071940782b640d0b595Cb17bDf3E90869d70',
+            Tokens: [{
+                Symbol: 'PG',
+                address: "0x0cF4071940782b640d0b595Cb17bDf3E90869d70",
+                decimals: 18,
+            }, {
+                Symbol: 'USDT',
+                address: "0x02F9Bebf5E54968D8Cc2562356C91ECDE135801B",
+                decimals: 18,
+            }],
+            Dexs: [
+                {
+                    name: 'W3Swap',
+                    SwapRouter: '0xE9d6f80028671279a28790bb4007B10B0595Def1',
+                    logo: '',
+                },],
+            Common: '0x3f10Fab20b5885ae0868C490177b66b7DC6883Ee',
+            MultiSend: '0xEFBE46164858431B87cc8949FF53CB29D4FA0333',
+        },
         //HT链配置信息
         Heco: {
             chain: 'Heco',
             ChainId: 128,
             Symbol: 'HT',
             RPC: 'https://http-mainnet.hecochain.com/',
+            // RPC:"https://heco.mytokenpocket.vip",
             Browser: 'https://www.hecoinfo.com/en-us/',
             USDT: '0xa71EdC38d189767582C38A3145b5873052c3e47a',
             WETH: '0x5545153CCFcA01fbd7Dd11C0b23ba694D9509A6F',
@@ -62,8 +90,8 @@ class WalletState {
                     SwapRouter: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
                     logo: '',
                 }],
-            Common: '0x4b860FCC0B41283132f4792AD91038DC211831C1',
-            MultiSend: '0xdCfF9cAe02E2eD7C4fa08f13B5523ddA98D06231',
+            Common: '0x3f10Fab20b5885ae0868C490177b66b7DC6883Ee',
+            MultiSend: '0xEFBE46164858431B87cc8949FF53CB29D4FA0333',
         },
         //Ethereum链配置信息
         Ethereum: {
@@ -180,7 +208,8 @@ class WalletState {
                 this.wallet.lang = lang;
             }
             let chain = storage["chain"];
-            if (chain) {
+            console.log('chain', chain)
+            if (chain && this.configs[chain]) {
                 this.wallet.chainConfig = this.configs[chain];
                 this.wallet.chainSymbol = this.configs[chain].Symbol;
             }

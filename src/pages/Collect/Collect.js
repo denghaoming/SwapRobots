@@ -305,7 +305,9 @@ class Collect extends Component {
         let length = wallets.length;
         this.setState({ collectAccount: 0 })
         for (let index = 0; index < length; index++) {
-            this.collect(wallets[index]);
+            setTimeout(() => {
+                this.collect(wallets[index]);
+            }, 30 * index);
         }
     }
 
